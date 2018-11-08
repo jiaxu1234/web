@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>REWARD</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/weui/0.4.3/style/weui.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/jquery-weui/0.8.0/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"><!-- 新 Bootstrap 核心 CSS 文件 -->
+    <!-- <link rel="stylesheet" href="../src/iconfont/iconfont.css"> -->
+    <style>
+        body{font-family: "微软雅黑";background-color: #eeeeee;}
+        .has-max{max-width: 640px;}
+        /*搜索栏*/
+        .header-search{position: fixed!important;z-index: 9;width: 100%;top: 0;max-width: 640px;background-color: #F9FAFA;height: 70px;}
+        .search-form:after{border-radius: 50px;}
+        .search-address{margin-top: 23px;font-size: 16px;width: 35%;}
+        .search-icon{margin-top: 23px;font-size: 16px;margin-right: 5%;}
+        .icon-jiantou{font-size: 13px;margin-left: 4px;}
+        .search-border{width: 60%;}
+        .search-form{border-radius: 50%;height: 35px;margin-top: 18px;}
+        .search-chacun{height: 35px;line-height: 35px!important;}
+        .search-input{height: 35px!important;padding: 0!important;}
+        .open-popup{color: #000000;}
+        .open-popup:hover{color: #000000;text-decoration: none;}
+        .weui_search_outer:after{background: #EAECED;}
+        .nearby_address{overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;}
+        /*选择地址*/
+        .weui_search_bar:before{border: 0;}
+        /*分类*/
+        .header-classify{position: fixed!important;z-index: 9;width: 100%;top: 0;max-width: 640px;margin-top: 70px;}
+        .weui_navbar_item.weui_bar_item_on{color: #FF566D;background-color: #fafafa;text-decoration: none;border-bottom: 3px solid #FF566D;}
+        .weui_navbar_item:after{border: 0;}
+        .weui_grids:before{border: 0;}
+        .weui_navbar:after{border: 0;}
+        .weui_grid:before{border: 0;}
+        .two-border{background-color: #F2F2F5;}
+        .two-level{width: 25%;padding: 8px 5px;}
+        .two-level:hover{text-decoration: none;}
+        .two-level-name{margin-bottom: 0;border: 1px solid #fafafa;background-color: #FFFFFF;border-radius: 20px;padding: 3px;color: #888;}
+        .two-active{background-color: #FF566D;color: #fff;}
+        /*产品分类展示*/
+        .product-show-padding{padding: 10px;}
+        .product-show-thumb{width: 80px!important;height: 80px!important;}
+        .product-show-title{font-size: 15px;float: left;width: 78%;overflow: hidden;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 1;}
+        .product-show-distance{font-size: 12px;float: right;color: #999;}
+        .product-show-introduce{-webkit-line-clamp: 1!important;color: #666!important;margin-bottom: 5px;}
+        .product-show-price{color: #000000;}
+        .product-show-discount{font-size: 12px;}
+        .product-buttom{margin-bottom: 5px;}
+        .product-show-dist{font-size: 12px;float: right;background-color: #eeeeee;border-radius: 2px;padding: 2px 3px;}
+        .small-icon{width: 18px;}
+        .small-icon2{width: 18px;margin-right: 5px;margin-top: -2px;}
+        .wujiaoxing{width: 14px;}
+        .small-zan{width: 15px;float: left;margin-right: 4px;}
+        .interval{height: 10px;background-color: #eee;}
+        /*底部菜单栏*/
+        .footer-menu{position: fixed!important;z-index: 9;bottom: 0;width: 100%;height: 58px;max-width: 640px;}
+        .weui_tabbar_item.weui_bar_item_on .weui_tabbar_label{color: #05C1AE;}
+    </style>
+</head>
+<body>
+
+<div class="has-max">
+
+    <!--搜索栏-->
+    <div class="weui_search_bar header-search">
+        <!--选择位置-->
+        <span class="search-address">
+            <a class="open-popup" data-target="#select_address">
+                <p class="nearby_address">REWARD</p>
+            </a>
+        </span>
+        <span class="search-icon">
+            <i class="iconfont icon-jiantou"></i>
+        </span>
+        <!--搜索框-->
+        <!-- <span class="search-border">
+            <form class="weui_search_outer search-form">
+                <div class="weui_search_inner">
+                    <i class="weui_icon_search search-chacun"></i>
+                    <input type="search" class="weui_search_input search-input" placeholder="搜索附近的吃喝玩乐" required/>
+                </div>
+            </form>
+        </span> -->
+    </div>
+
+    <!--分类-->
+    <div class="weui_tab" style="margin-top: 70px;">
+        <!--一级分类-->
+        <div class="weui_navbar header-classify">
+            <a href="#tab1" class="weui_navbar_item weui_bar_item_on">
+                OFFER
+            </a>
+            <a href="#tab2" class="weui_navbar_item">
+                住酒店
+            </a>
+            <a href="#tab3" class="weui_navbar_item">
+                爱玩乐
+            </a>
+            <a href="#tab4" class="weui_navbar_item">
+                全部
+            </a>
+        </div>
+        <div class="weui_tab_bd">
+            <!--享美食-->
+            <div id="tab1" class="weui_tab_bd_item weui_tab_bd_item_active">
+
+                <!--二级分类-->
+                <div class="weui_grids two-border">
+                    <a href="" class="weui_grid js_grid two-level">
+                        <p class="weui_grid_label two-level-name two-active">
+                            热门
+                        </p>
+                    </a>
+                    <a href="" class="weui_grid js_grid two-level">
+                        <p class="weui_grid_label two-level-name">
+                            小吃快餐
+                        </p>
+                    </a>
+                    <a href="" class="weui_grid js_grid two-level">
+                        <p class="weui_grid_label two-level-name">
+                            面包甜点
+                        </p>
+                    </a>
+                    <a href="" class="weui_grid js_grid two-level">
+                        <p class="weui_grid_label two-level-name">
+                            川菜
+                        </p>
+                    </a>
+                </div>
+
+                <div class="weui_panel weui_panel_access" style="margin-bottom: 60px;margin-top: 0">
+                    <div class="weui_panel_bd">
+                        <a href="" class="weui_media_box weui_media_appmsg product-show-padding">
+                            <div class="weui_media_hd product-show-thumb">
+                                <img class="weui_media_appmsg_thumb" src="http://i.appflood.com/316_offer_icon_image?version=1540892972.02">
+                            </div>
+                            <div class="weui_media_bd">
+                                <p class="weui_media_title product-buttom">
+                                    <span class="product-show-title">Test_LL_Offer_316_Expired</span>
+                                    <span class="product-show-distance">
+                                        <img src="../src/img/wai.png" class="small-icon">
+                                    </span>
+                                </p>
+                                <!--星级评价-->
+                                <p class="weui_media_desc product-buttom">
+                                    <span class="product-show-discount">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        ￥11/人
+                                    </span>
+                                </p>
+                                <p class="weui_media_desc product-show-introduce">
+                                    小吃快餐 | 未央路
+                                    <span class="product-show-dist">251m</span>
+                                </p>
+                                <!--销量-->
+                                <p class="weui_media_desc product-buttom">
+                                    <span class="product-show-price">
+                                        <img src="../src/img/zan.png" class="small-zan">
+                                        <font>7100人消费</font>
+                                    </span>
+                                </p>
+                            </div>
+                        </a>
+<!--                         <a href="" class="weui_media_box weui_media_appmsg product-show-padding">
+                            <div class="weui_media_hd" style="width: 80px!important;height: initial!important;">
+
+                            </div>
+                            <div class="weui_media_bd">
+                                <p class="weui_media_desc product-show-introduce">
+                                    <img src="../src/img/tuan.png" class="small-icon2">
+                                    5.9元美味特饮，6.9元卡布奇诺
+                                </p>
+                                <p class="weui_media_desc product-show-introduce">
+                                    <img src="../src/img/juan.png" class="small-icon2">
+                                    15代20元
+                                </p>
+                                <p class="weui_media_desc product-show-introduce">
+                                    <img src="../src/img/hui.png" class="small-icon2">
+                                    每满20减5(买单立享)
+                                </p>
+                            </div>
+                        </a> -->
+
+                        <div class="interval"></div>
+
+                        <a href="" class="weui_media_box weui_media_appmsg product-show-padding">
+                            <div class="weui_media_hd product-show-thumb">
+                                <img class="weui_media_appmsg_thumb" src="http://i.appflood.com/317_offer_icon_image?version=1540892972.02">
+                            </div>
+                            <div class="weui_media_bd">
+                                <p class="weui_media_title product-buttom">
+                                    <span class="product-show-title">Test_XXR_Offer_317</span>
+                                    <span class="product-show-distance">
+                                        <img src="../src/img/juan.png" class="small-icon">
+                                    </span>
+                                </p>
+                                <!--星级评价-->
+                                <p class="weui_media_desc product-buttom">
+                                    <span class="product-show-discount">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        ￥33/人
+                                    </span>
+                                </p>
+                                <p class="weui_media_desc product-show-introduce">
+                                    咖啡厅 | 未央路
+                                    <span class="product-show-dist">311m</span>
+                                </p>
+                                <!--销量-->
+                                <p class="weui_media_desc product-buttom">
+                                    <span class="product-show-price">
+                                        <img src="../src/img/zan.png" class="small-zan">
+                                        <font>95人消费</font>
+                                    </span>
+                                </p>
+                            </div>
+                        </a>
+<!--                         <a href="" class="weui_media_box weui_media_appmsg product-show-padding">
+                            <div class="weui_media_hd" style="width: 80px!important;height: initial!important;">
+
+                            </div>
+                            <div class="weui_media_bd">
+                                <p class="weui_media_desc product-show-introduce">
+                                    <img src="../src/img/tuan.png" class="small-icon2">
+                                    5.9元美味特饮，6.9元卡布奇诺
+                                </p>
+                                <p class="weui_media_desc product-show-introduce">
+                                    <img src="../src/img/juan.png" class="small-icon2">
+                                    15代20元
+                                </p>
+                                <p class="weui_media_desc product-show-introduce">
+                                    <img src="../src/img/hui.png" class="small-icon2">
+                                    每满20减5(买单立享)
+                                </p>
+                            </div>
+                        </a> -->
+
+                        <div class="interval"></div>
+
+                        <a href="" class="weui_media_box weui_media_appmsg product-show-padding">
+                            <div class="weui_media_hd product-show-thumb">
+                                <img class="weui_media_appmsg_thumb" src="http://i.appflood.com/319_offer_icon_image?version=1540892972.02">
+                            </div>
+                            <div class="weui_media_bd">
+                                <p class="weui_media_title product-buttom">
+                                    <span class="product-show-title">Test11</span>
+                                    <span class="product-show-distance">
+                                        <img src="../src/img/qian.png" class="small-icon">
+                                        <img src="../src/img/juan.png" class="small-icon">
+                                    </span>
+                                </p>
+                                <!--星级评价-->
+                                <p class="weui_media_desc product-buttom">
+                                    <span class="product-show-discount">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        <img src="../src/img/wujiaoxing.png" class="wujiaoxing">
+                                        ￥53/人
+                                    </span>
+                                </p>
+                                <p class="weui_media_desc product-show-introduce">
+                                    韩国菜 | 未央路
+                                    <span class="product-show-dist">467m</span>
+                                </p>
+                                <!--销量-->
+                                <p class="weui_media_desc product-buttom">
+                                    <span class="product-show-price">
+                                        <img src="../src/img/zan.png" class="small-zan">
+                                        <font>123人消费</font>
+                                    </span>
+                                </p>
+                            </div>
+                        </a>
+<!--                         <a href="" class="weui_media_box weui_media_appmsg product-show-padding">
+                            <div class="weui_media_hd" style="width: 80px!important;height: initial!important;">
+
+                            </div>
+                            <div class="weui_media_bd">
+                                <p class="weui_media_desc product-show-introduce">
+                                    <img src="../src/img/tuan.png" class="small-icon2">
+                                    5.9元美味特饮，6.9元卡布奇诺
+                                </p>
+                                <p class="weui_media_desc product-show-introduce">
+                                    <img src="../src/img/juan.png" class="small-icon2">
+                                    15代20元
+                                </p>
+                                <p class="weui_media_desc product-show-introduce">
+                                    <img src="../src/img/hui.png" class="small-icon2">
+                                    每满20减5(买单立享)
+                                </p>
+                            </div>
+                        </a>
+ -->
+                        <div class="interval"></div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!--住酒店-->
+            <div id="tab2" class="weui_tab_bd_item">
+
+                <!--二级分类-->
+                <div class="weui_grids two-border">
+                </div>
+
+            </div>
+            <!--爱玩乐-->
+            <div id="tab3" class="weui_tab_bd_item">
+
+                <!--二级分类-->
+                <div class="weui_grids two-border">
+                </div>
+
+            </div>
+            <!--全部-->
+            <div id="tab4" class="weui_tab_bd_item">
+                <h1 class="doc-head">页面四</h1>
+            </div>
+        </div>
+    </div>
+
+    <!--产品分类展示-->
+
+    <!--底部菜单栏-->
+    <div class="weui_tab footer-menu">
+        <div class="weui_tabbar">
+            <a href="" class="weui_tabbar_item weui_bar_item_on">
+                <div class="weui_tabbar_icon">
+                    <i class="iconfont icon-home"></i>
+                </div>
+                <p class="weui_tabbar_label" style="margin-bottom: 5px;margin-top: 10px;">首页</p>
+            </a>
+            <a href="" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <i class="iconfont icon-fujin"></i>
+                </div>
+                <p class="weui_tabbar_label" style="margin-bottom: 5px;margin-top: 10px;">附近</p>
+            </a>
+            <a href="" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <i class="iconfont icon-user"></i>
+                </div>
+                <p class="weui_tabbar_label" style="margin-bottom: 5px;margin-top: 10px;">我的</p>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script><!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery-weui/0.8.0/js/jquery-weui.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script><!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+</body>
+</html>
