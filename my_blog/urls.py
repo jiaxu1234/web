@@ -22,7 +22,7 @@ from pages import views as pages_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home/$', views.home),
+    url(r'^$', views.home),
     # url(r'^(?P<my_args>\d+)/$', views.detail1, name='detail'),
     url(r'^id/(?P<id>\d+)/$', views.detail2, name='detai2'),
     url(r'^lover/$', pages_views.display, name = "love"),
